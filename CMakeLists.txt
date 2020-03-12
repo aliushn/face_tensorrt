@@ -29,12 +29,6 @@ if(BUILD_PARSERS)
     list(APPEND DEPS_LIST nvuffparser nvcaffeparser nvonnxparser)
 endif()
 
-#if(BUILD_PLUGINS OR BUILD_PARSERS)
-#add_dependencies(face_tensorrt
-#${DEPS_LIST}
-#)
-#endif()
-
 # TODO: Remove the NVINTERNAL branch once the CMake system is fully integrated into P4
 if (NVINTERNAL)
     set(ONNX_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/parsers${NVINTERNAL_SUFFIX}/onnx CACHE STRING "Onnx include directory")
@@ -203,5 +197,4 @@ add_executable(face_tensorrt ${NAME_HEADERS} ${NAME_LIBS})
 #FIND_LIBRARY(SAMPLE_LIBS NAMES myelin PATHS /usr/local/cuda/lib64/)
 target_link_libraries(face_tensorrt ${OpenCV_LIBS} ${OpenMP_LIBS} ${CUDA_LIBRARIES} ${NAME_TRT_LIBS} pthread ${CUBLAS_LIB}
         ${MYELIN_LIB} -Wl,--unresolved-symbols=ignore-in-shared-libs)
-#        /usr/local/cuda/lib64/libcudart_static.a)
 
