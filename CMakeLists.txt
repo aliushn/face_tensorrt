@@ -118,8 +118,10 @@ set( NAME_LIBS
 #        mtcnn.cpp
 #        util.cpp
 #        base.cpp
-        src/checkBlackList.cpp
-        src/face_tensorrt.cpp
+#        src/checkBlackList.cpp
+        src/create_engine.cpp
+
+#        src/face_tensorrt.cpp
         src/common/getOptions.cpp
         src/common/logger.cpp
 #        src/common/sampleEngines.cpp
@@ -128,7 +130,7 @@ set( NAME_LIBS
         src/common/sampleReporting.cpp
 
 #        src/blacklistDetection.cpp
-        )
+        include/util.h src/util.cpp include/mtcnn.h include/base.h src/base.cpp src/lnet.cpp include/lnet.h src/create_engine.cpp build_trt/trtNet.h build_trt/trtNet.cpp)
 
 set(TRT_DIR /root/optimization/TensorRT-7.0.0.11/lib/)
 
@@ -160,7 +162,7 @@ set( NAME_TRT_LIBS
 
 
 set(CUDA_TOOLKIT_ROOT_DIR /usr/local/cuda)
-set(TRT_TOOLKIT_ROOT_DIR /root/optimization/TensorRT-7.0.0.11)
+#set(TRT_TOOLKIT_ROOT_DIR /root/optimization/TensorRT-7.0.0.11)
 
 find_library(MYELIN_LIB myelin HINTS
         ${TRT_TOOLKIT_ROOT_DIR}/lib NO_DEFAULT_PATH)
